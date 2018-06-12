@@ -23,6 +23,7 @@ class UpdateRecipe extends Component {
     e.preventDefault();
 
     let formData = {
+      recipeId: this.props.recipeId,
       title: this.state.title,
       description: this.state.description,
       image: this.state.image
@@ -76,6 +77,7 @@ class UpdateRecipe extends Component {
           />
           <input type="submit" value="Save" />
         </form>
+        <p className="response">{this.state.response}</p>
       </div>
     );
   }

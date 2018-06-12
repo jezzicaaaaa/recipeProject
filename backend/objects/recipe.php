@@ -61,4 +61,23 @@ class Recipe{
             return false;
         }
     }
+    
+    function update($id, $title, $description, $imageurl){
+
+        $query = "UPDATE recipe SET title = :title, description = :description, imageurl = :imageurl WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindValue(":id", $id);
+        $stmt->bindParam(":title", $title);
+        $stmt->bindParam(":description", $description);
+        $stmt->bindParam(":imageurl", $imageurl);
+
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+
+    }
 }

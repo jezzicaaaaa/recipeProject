@@ -93,8 +93,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
     $data = json_decode(file_get_contents("php://input"));
 
-    
+    $id = $data->recipeId;
+    $title = $data->title;
+    $description = $data->description;
+    $imageurl = $data->image;
 
+    $res = $recipe->update($id, $title,$description, $imageurl);
+
+    if ($res){
+        echo json_encode(
+            array("success" => $res,
+                  "message" => $res ? "Successfully updated recipe!" : "ERROR, failed to update recipe!"
+            )
+        );
+    }
+   
 }
 
 ?>

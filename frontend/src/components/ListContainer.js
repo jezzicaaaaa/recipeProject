@@ -9,8 +9,7 @@ class ListContainer extends Component {
           <li>
             {this.props.recipes.map(recipe => (
               <div>
-              <p> {recipe.id}</p>
-              <Recipe submitRecipe={this.props.submitRecipe} key={recipe.id} title={recipe.title} desc={recipe.description} />
+              <Recipe submitRecipe={this.props.submitRecipe} dbId={recipe.id} key={recipe.id} title={recipe.title} desc={recipe.description} />
               </div>
             ))}
           </li>

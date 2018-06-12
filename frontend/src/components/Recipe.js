@@ -5,6 +5,7 @@ class Recipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      recipeId: this.props.dbId,
       initialTitle: this.props.title,
       initialDescription: this.props.description,
       updateRecipe: false
@@ -22,13 +23,12 @@ class Recipe extends Component {
   render() {
     return (
       <div className="recipe_container">
-        <p>{this.props.key}</p>
         <h3>{this.props.title}</h3>
         <p>{this.props.desc}</p>
         <button onClick={this.update}>Update</button>
         <button>Delete</button>
         {this.state.updateRecipe ? (
-          <UpdateRecipe submitRecipe={this.props.submitRecipe} title={this.props.title} desc={this.props.desc} />
+          <UpdateRecipe submitRecipe={this.props.submitRecipe} recipeId={this.state.recipeId} title={this.props.title} desc={this.props.desc} />
         ) : null}
       </div>
     );
