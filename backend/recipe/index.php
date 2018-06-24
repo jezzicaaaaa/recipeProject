@@ -107,7 +107,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
             )
         );
     }
-   
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'DELETE'){
+
+    $database = new Database();
+    $db = $database->getConnection();
+
+    $recipe = new Recipe($db);
+
+    $data = json_decode(file_get_contents("php://input"));
+
+
+    $id = $data->recipeId;
+    $res = $recipe->delete($id, $title,$description, $imageurl);
 }
 
 ?>

@@ -80,4 +80,19 @@ class Recipe{
         }
 
     }
+    
+    function delete($id){
+
+        $query = 'DELETE FROM recipe WHERE id = :id';
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bindValue(":id", $id);
+
+        if($stmt->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

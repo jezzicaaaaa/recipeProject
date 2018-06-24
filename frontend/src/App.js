@@ -49,7 +49,7 @@ class App extends Component {
           Add Recipe
         </button>
         {this.state.addRecipe ? <AddRecipe fetchRecipe={this.fetchRecipe}/> : null}
-        <ListContainer recipes={this.state.list} />
+        <ListContainer recipes={this.state.list} fetchRecipe={this.fetchRecipe} />
       </div>
     );
   }
